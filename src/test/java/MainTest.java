@@ -1,7 +1,5 @@
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -16,6 +14,7 @@ public class MainTest {
         for (int i = 1; i < 6; i++){
             arr.add(i);
         }
+
         int result_min = Main._min(arr);
         int result_max = Main._max(arr);
         int result_sum = Main._sum(arr);
