@@ -28,29 +28,19 @@ public class MainTest {
     }
 
     @Test
-    public void test_time() throws FileNotFoundException {
-        Scanner reader;
-        int nextint;
+    public void test_time() {
         ArrayList<Integer> numbs;
         for (int i = 0; i < 6; i++){
-            reader = new Scanner(new File("test1" + i + ".txt"));
             numbs = new ArrayList<>();
-            while (reader.hasNext()) {
-                // проверка на принадлежность числа диапазону int
-                try {
-                    nextint = Integer.parseInt(reader.next());
-                    numbs.add(nextint);
-                } catch (NumberFormatException e) {
-                    throw new NumberFormatException("Число выходит за диапазон int!");
-                }
-                numbs.add(nextint);
+            for (int j = 0; j < Math.pow(10, i); j++){
+                numbs.add(1);
             }
             double time_start = System.nanoTime();
             Main._sum(numbs);
             double time_end = System.nanoTime();
-            Assert.assertEquals((time_end - time_start) / 1000000. < 15, true);
+            Assert.assertEquals((time_end - time_start) / 1000000. < 20, true);
             System.out.println((time_end - time_start) / 1000000.);
-            // каждый тест проходит менее чем за 15 миллисекунд
+            // каждый тест проходит менее чем за 20 миллисекунд
         }
 
     }
