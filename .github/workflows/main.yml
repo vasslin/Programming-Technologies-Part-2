@@ -19,7 +19,7 @@ jobs:
         run: mvn -B clean test
       - name: "telegram Notification"
         if: ${{ always() }}
-        uses: "aaa/telegram-action@master"
+        uses: "appleboy/telegram-action@master"
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
