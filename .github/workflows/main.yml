@@ -18,7 +18,6 @@ jobs:
       - name: Maven Package
         run: mvn -B clean test
       - name: "telegram Notification"
-        if: ${{ success() }}
         uses: "appleboy/telegram-action@master"
         with:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -31,12 +30,3 @@ jobs:
             Repository: ${{ github.repository }}
           
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            - name: Telegram notification
-      - name: "telegram Notification"
-        if: ${{ failure() }}
-        uses: "appleboy/telegram-action@master"
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: Tests failed |
-            curl -s -X POST https://api.telegram.org/bot7094090150:AAFZ2QeDf4-RFVI_ouaMN6KcNmmCJgQLsv0/sendMessage -d chat_id=871489705 -d text="Tests failed, please check the logs for more information"
