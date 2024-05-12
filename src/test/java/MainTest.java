@@ -1,13 +1,9 @@
 import org.junit.Assert;
 import org.junit.Test;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class MainTest {
-
-
     @Test
     public void testMain() {
         ArrayList<Integer> arr = new ArrayList<>();
@@ -30,19 +26,34 @@ public class MainTest {
     @Test
     public void test_time() {
         ArrayList<Integer> numbs;
-        for (int i = 0; i < 6; i++){
-            numbs = new ArrayList<>();
-            for (int j = 0; j < Math.pow(10, i); j++){
-                numbs.add(1);
-            }
-            double time_start = System.nanoTime();
-            Main._sum(numbs);
-            double time_end = System.nanoTime();
-            Assert.assertEquals((time_end - time_start) / 1000000. < 20, true);
-            System.out.println((time_end - time_start) / 1000000.);
-            // каждый тест проходит менее чем за 20 миллисекунд
-        }
+        for (String k: new String[] {"max", "min", "sum", "mult"}){
+            for (int i = 0; i < 5; i++){
+                numbs = new ArrayList<>();
+                for (int j = 0; j < Math.pow(2, i); j++){
+                    numbs.add(j % 2);
+                }
+                double time_start = System.nanoTime();
+                switch (k){
+                    case "sum":
+                        Main._sum(numbs);
+                        break;
+                    case "max":
+                        Main._max(numbs);
+                        break;
+                    case "min":
+                        Main._min(numbs);
+                        break;
+                    case "mult":
+                        Main._mult(numbs);
+                        break;
+                }
 
+                double time_end = System.nanoTime();
+                Assert.assertEquals((time_end - time_start) / 1000000. < 20, true);
+                System.out.println((time_end - time_start) / 1000000.);
+                // каждый тест проходит менее чем за 20 миллисекунд
+            }
+        }
     }
 
     @Test
@@ -55,5 +66,4 @@ public class MainTest {
         Assert.assertEquals((int)Math.signum(result_mult), (int)Math.pow((-1), arr.size()));
 
     }
-
 }
