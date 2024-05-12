@@ -30,3 +30,4 @@ jobs:
             Repository: ${{ github.repository }}
           
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            ${{ job.status }}: Tests ${{ job.status == 'success' && 'passed' || 'failed' }}.
