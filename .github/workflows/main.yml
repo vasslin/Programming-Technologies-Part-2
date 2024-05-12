@@ -24,10 +24,11 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
+            Tests ${{ job.status }}
             ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message}}
             
             Repository: ${{ github.repository }}
           
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-            ${{ job.status }}: Tests ${{ job.status == 'success' && 'passed' || 'failed' }}.
+            

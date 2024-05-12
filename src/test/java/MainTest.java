@@ -19,7 +19,7 @@ public class MainTest {
         Assert.assertEquals(result_min, 1);
         Assert.assertEquals(result_max, 5);
         Assert.assertEquals(result_mult, 2 * 3 * 4 * 5);
-        Assert.assertEquals(result_sum, 1 + 2 + 3 + 4 + 5);
+        Assert.assertEquals(result_sum, 1 + 2 + 3 + 4);
 
     }
 
